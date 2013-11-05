@@ -1,9 +1,29 @@
 require 'iterator_example'
 
 describe IteratorExample do
-  let (:iterator_example) { IteratorExample.new }
+  let (:fruit_list)     { ["Apple", "Orange", "Pear"] }
+  let (:vegetable_hash) {
+                          {
+                            "Carrot" => "Fresh",
+                            "Red Bell Pepper" => "Expired",
+                            "Celery" => "Fresh"
+                          }
+                        }
+  let (:pod_vegetables) {
+                          {
+                            "Green Beans" => "Expired",
+                            "Wax Beans" => "Fresh",
+                            "Runner Beans" => "Expired",
+                            "Mange-Tout Peas" => "Expired"
+                          }
+                        }
+  let (:iterator_example) { IteratorExample.new() }
 
-  it "returns null when an empty directory is input" do
-    iterator_example.list_foods(["Fruit", "Vegetable"]).should == ["Apple", "Banana", "Golden Kiwi", "Carrot", "Red Bell Pepper", "Celery"]
+  it "returns a list of fruits and vegetables" do
+    fruit = Fruit.new
+    fruit.add(fruit_list)
+    vegetable = Vegetable.new
+    vegetable.add(vegetable_hash)
+    iterator_example.list_foods([fruit, vegetable]).should == ["Apple", "Orange", "Pear", "Carrot", "Red Bell Pepper", "Celery"]
   end
 end

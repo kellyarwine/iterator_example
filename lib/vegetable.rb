@@ -1,15 +1,13 @@
 require 'vegetable_iterator'
 
 class Vegetable
-	def create_iterator
-		vegetable_iterator = VegetableIterator.new(all)
-	end
+  attr_reader :vegetable_iterator, :all
 
-	def all
-		vegetable_collection = {}
-		vegetable_collection["Carrot"] = "fresh"
-		vegetable_collection["Red Bell Pepper"] = "expired"
-		vegetable_collection["Celery"] = "fresh"
-		vegetable_collection
-	end
+  def add(vegetable_hash)
+    @all = vegetable_hash
+  end
+
+  def create_iterator
+    @vegetable_iterator = VegetableIterator.new(@all)
+  end
 end

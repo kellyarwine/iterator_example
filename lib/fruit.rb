@@ -1,17 +1,13 @@
 require 'fruit_iterator'
 
 class Fruit
-  attr_reader :fruit_iterator
+  attr_reader :fruit_iterator, :all
 
-  def create_iterator
-    fruit_iterator = FruitIterator.new(all)
+  def add(fruit_list)
+      @all = fruit_list
   end
 
-  def all
-    fruit_collection = []
-    fruit_collection << "Apple"
-    fruit_collection << "Banana"
-    fruit_collection << "Golden Kiwi"
-    fruit_collection
+  def create_iterator
+    @fruit_iterator = FruitIterator.new(@all)
   end
 end

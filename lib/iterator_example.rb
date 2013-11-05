@@ -6,8 +6,7 @@ class IteratorExample
     foods = []
 
     types.each do |type|
-      klass = Object.const_get(type)
-      iterator = klass.new.create_iterator
+      iterator = type.create_iterator
       while iterator.has_next == true
         foods << iterator.next
       end
